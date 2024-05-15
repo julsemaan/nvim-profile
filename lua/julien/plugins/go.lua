@@ -16,8 +16,6 @@ return {
     })
 
     require("go").setup()
-    require("go.format").gofmt()
-    require("go.format").goimports()
   end,
   event = { "CmdlineEnter" },
   ft = { "go", 'gomod' },
