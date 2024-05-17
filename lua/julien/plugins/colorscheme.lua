@@ -1,10 +1,10 @@
-return 	{
-	{
-		"LazyVim/LazyVim",
-		opts = {
-			colorscheme = "catppuccin",
-		},
-	},
+return {
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "catppuccin",
+    },
+  },
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -24,13 +24,6 @@ return 	{
         properties = {},
         types = {},
       },
-      color_overrides = {
-        mocha = {
-          base = "#000000",
-          mantle = "#000000",
-          crust = "#000000",
-        },
-      },
       integrations = {
         telescope = {
           enabled = true,
@@ -43,9 +36,7 @@ return 	{
       },
     },
     config = function()
-
       vim.cmd("colorscheme catppuccin")
     end,
   },
 }
-
