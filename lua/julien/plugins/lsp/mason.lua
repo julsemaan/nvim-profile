@@ -24,21 +24,32 @@ return {
       },
     })
 
+    local lsp_ensure_installed = {
+      "gopls",
+    }
+    if vim.fn.executable('npm') == 1 then
+      table.insert(lsp_ensure_installed, "bashls")
+      table.insert(lsp_ensure_installed, "html")
+      table.insert(lsp_ensure_installed, "cssls")
+    end
+
     mason_lspconfig.setup({
       -- list of servers for mason to install
-      ensure_installed = {
-        "gopls",
-        --"tsserver",
-        --"html",
-        --"cssls",
-        --"tailwindcss",
-        --"svelte",
-        --"lua_ls",
-        --"graphql",
-        --"emmet_ls",
-        --"prismals",
-        --"pyright",
-      },
+      ensure_installed = lsp_ensure_installed,
+      --ensure_installed = {
+      --  "gopls",
+      --  "bashls",
+      --  --"tsserver",
+      --  --"html",
+      --  --"cssls",
+      --  --"tailwindcss",
+      --  --"svelte",
+      --  --"lua_ls",
+      --  --"graphql",
+      --  --"emmet_ls",
+      --  --"prismals",
+      --  --"pyright",
+      --},
     })
 
     mason_tool_installer.setup({
