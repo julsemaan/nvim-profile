@@ -25,3 +25,6 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 -- Toggle line numbers
 keymap.set("n", "<leader>lne", "<cmd>:set number <CR> <BAR> :set relativenumber <CR> <BAR> :IBLEnable <CR> <BAR> :set scl=yes <CR>", { desc = "Enable line numbers and indentation markers" })
 keymap.set("n", "<leader>lnd", "<cmd>:set nonumber <CR> <BAR> :set norelativenumber <CR> <BAR> :IBLDisable <CR> <BAR> :set scl=no <CR>", { desc = "Disable line numbers and indentation markers" })
+
+-- Print current file path
+keymap.set("n", "<leader>pf", "<cmd>:!echo %<CR>", { desc = "Print the current filename"})
