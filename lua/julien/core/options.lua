@@ -39,3 +39,5 @@ opt.splitbelow = true -- split horizontal window to the bottom
 -- turn off swapfile
 opt.swapfile = false
 
+-- Fix for YAML files commenting mess
+vim.cmd("autocmd FileType yaml,yaml.ansible setlocal indentkeys-=0#")
