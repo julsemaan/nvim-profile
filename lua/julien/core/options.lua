@@ -30,7 +30,7 @@ opt.signcolumn = "yes"  -- show sign column so that text doesn't shift
 opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
 
 -- clipboard
-opt.clipboard:append("unnamedplus") -- use system clipboard as default register
+-- opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 
 -- split windows
 opt.splitright = true -- split vertical window to the right
@@ -44,3 +44,4 @@ opt.mouse =
 
 -- Fix for YAML files commenting mess
 vim.cmd("autocmd FileType yaml,yaml.ansible setlocal indentkeys-=0#")
+
