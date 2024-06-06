@@ -24,6 +24,11 @@ return {
 
     telescope.setup({
       defaults = {
+        file_ignore_patterns = {
+          "venv",
+          "node_modules",
+          "*.pyc",
+        },
         path_display = { "truncate" },
         mappings = {
           i = {
@@ -36,7 +41,8 @@ return {
       },
     })
 
-    telescope.load_extension("fzf")
+    -- rely on ripgrep now instead
+    --telescope.load_extension("fzf")
 
     -- set keymaps
     local keymap = vim.keymap -- for conciseness
