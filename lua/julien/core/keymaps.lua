@@ -28,3 +28,6 @@ keymap.set("n", "<leader>lnd", "<cmd>:set nonumber <CR> <BAR> :set norelativenum
 
 -- Print current file path
 keymap.set("n", "<leader>pf", "<cmd>:!echo %<CR>", { desc = "Print the current filename"})
+
+keymap.set("n", "<leader>cbe", "<cmd>:set clipboard=unnamedplus <CR>", { desc = "Enable using the OS clipboard" })
+keymap.set("n", "<leader>cbd", "<cmd>:set clipboard= <CR>", { desc = "Disable using the OS clipboard" })
