@@ -6,9 +6,27 @@ return {
     { "antosha417/nvim-lsp-file-operations", config = true },
     { "folke/neodev.nvim", opts = {} },
   },
+  opts = {
+    servers = {
+      gopls = {
+        settings = {
+          gopls = {
+            buildFlags = { "-tags=integration" },
+          },
+        },
+      },
+    },
+  },
   config = function()
     -- import lspconfig plugin
     local lspconfig = require("lspconfig")
+
+    lspconfig.gopls.setup{
+      on_attach = require'completion'.on_attach;
+      settings = { gopls =  {
+        buildFlags =  {"-tags=integration"}
+      }
+    }
 
     -- import mason_lspconfig plugin
     local mason_lspconfig = require("mason-lspconfig")
