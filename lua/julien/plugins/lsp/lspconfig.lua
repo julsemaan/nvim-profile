@@ -21,13 +21,6 @@ return {
     -- import lspconfig plugin
     local lspconfig = require("lspconfig")
 
-    lspconfig.gopls.setup{
-      on_attach = require'completion'.on_attach;
-      settings = { gopls =  {
-        buildFlags =  {"-tags=integration"}
-      }
-    }
-
     -- import mason_lspconfig plugin
     local mason_lspconfig = require("mason-lspconfig")
 
