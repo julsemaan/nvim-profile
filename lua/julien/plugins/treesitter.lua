@@ -13,6 +13,7 @@ return {
     treesitter.setup({ -- enable syntax highlighting
       highlight = {
         enable = true,
+        disable = {"c"},
       },
       -- enable indentation
       indent = {
@@ -43,7 +44,7 @@ return {
         "gitignore",
         "query",
         "vimdoc",
-        "c",
+        --"c",
       },
       incremental_selection = {
         enable = true,
