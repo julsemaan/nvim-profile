@@ -6,6 +6,17 @@ return {
     { "antosha417/nvim-lsp-file-operations", config = true },
     { "folke/neodev.nvim", opts = {} },
   },
+  opts = {
+    servers = {
+      gopls = {
+        settings = {
+          gopls = {
+            buildFlags = { "-tags=integration" },
+          },
+        },
+      },
+    },
+  },
   config = function()
     -- import lspconfig plugin
     local lspconfig = require("lspconfig")
