@@ -45,3 +45,16 @@ opt.mouse =
 -- Fix for YAML files commenting mess
 vim.cmd("autocmd FileType yaml,yaml.ansible setlocal indentkeys-=0#")
 
+vim.api.nvim_create_augroup("AutoFormat", {})
+
+vim.api.nvim_create_autocmd(
+    "BufWritePost",
+    {
+        pattern = "*.ino,*.h",
+        group = "AutoFormat",
+        callback = function()
+            vim.cmd("silent !clang-format -i %")
+            vim.cmd("edit")
+        end,
+    }
+)
