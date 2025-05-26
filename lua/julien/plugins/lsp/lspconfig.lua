@@ -78,6 +78,7 @@ return {
     })
 
     -- used to enable autocompletion (assign to every lsp server config)
+    -- This line lead to duplicate autocompletion
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
     -- Change the Diagnostic symbols in the sign column (gutter)
