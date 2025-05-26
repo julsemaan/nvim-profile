@@ -20,6 +20,7 @@ return {
       keymap.set("n", "<leader>cps", "<cmd>Copilot<cr>", { desc = "Ask Copilot for suggestions" })
       keymap.set("n", "<leader>cpc", "<cmd>CopilotChat<cr>", { desc = "Open Copilot chat" })
       keymap.set("n", "<leader>cpm", "<cmd>CopilotChatModels<cr>", { desc = "Choose Copilot chat model" })
+      keymap.set("n", "<leader>cpr", "<cmd>CopilotChatReset<cr>", { desc = "Reset Copilot chat" })
 
       vim.opt.completeopt = {'menuone', 'noinsert', 'noselect', 'popup'}
 
