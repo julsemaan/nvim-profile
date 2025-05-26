@@ -1,6 +1,7 @@
 return {
   "hrsh7th/nvim-cmp",
   event = "InsertEnter",
+  enabled = true,
   dependencies = {
     "hrsh7th/cmp-buffer", -- source for text in buffer
     "hrsh7th/cmp-path", -- source for file system paths
@@ -41,7 +42,7 @@ return {
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
         ["<C-e>"] = cmp.mapping.abort(), -- close completion window
-        ["<CR>"] = cmp.mapping.confirm({ select = false }),
+        --["<CR>"] = cmp.mapping.confirm({ select = false }),
       }),
       -- sources for autocompletion
       sources = cmp.config.sources({
