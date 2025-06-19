@@ -27,7 +27,7 @@ keymap.set("n", "<leader>lne", "<cmd>:set number <CR> <BAR> :set relativenumber 
 keymap.set("n", "<leader>lnd", "<cmd>:set nonumber <CR> <BAR> :set norelativenumber <CR> <BAR> :IBLDisable <CR> <BAR> :set scl=no <CR>", { desc = "Disable line numbers and indentation markers" })
 
 -- Print current file path
-keymap.set("n", "<leader>pf", "<cmd>:!echo %<CR>", { desc = "Print the current filename"})
+keymap.set("n", "<leader>pf", "<cmd>lua vim.notify(vim.fn.expand('%:p'))<CR>", { desc = "Show current filename" })
 
 keymap.set("n", "<leader>cbe", "<cmd>:set clipboard=unnamedplus <CR>", { desc = "Enable using the OS clipboard" })
 keymap.set("n", "<leader>cbd", "<cmd>:set clipboard= <CR>", { desc = "Disable using the OS clipboard" })
