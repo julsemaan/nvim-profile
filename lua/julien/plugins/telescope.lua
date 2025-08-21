@@ -59,6 +59,8 @@ return {
           "node_modules",
           "*.pyc",
           ".git/",
+          ".pio/",
+          "..ansible/",
         },
         path_display = { "truncate" },
         mappings = {
