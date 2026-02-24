@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({ { "LazyVim/LazyVim", import = "lazyvim.plugins" }, { import = "julien.plugins" }, { import = "julien.plugins.lsp" } }, {
   checker = {
-    enabled = true,
+    enabled = false,
     notify = false,
   },
   change_detection = {
