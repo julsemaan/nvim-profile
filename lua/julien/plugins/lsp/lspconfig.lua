@@ -6,6 +6,13 @@ return {
     { "antosha417/nvim-lsp-file-operations", config = true },
   },
   opts = {
+    capabilities = {
+      workspace = {
+        didChangeWatchedFiles = {
+          dynamicRegistration = true,
+        },
+      },
+    },
     servers = {
       gopls = {
         settings = {
@@ -19,6 +26,19 @@ return {
   config = function()
     -- import lspconfig plugin
     local lspconfig = require("lspconfig")
+    local lspconfig_util = require("lspconfig.util")
+
+    lspconfig_util.default_config.capabilities = vim.tbl_deep_extend(
+      "force",
+      lspconfig_util.default_config.capabilities,
+      {
+        workspace = {
+          didChangeWatchedFiles = {
+            dynamicRegistration = true,
+          },
+        },
+      }
+    )
 
     -- import mason_lspconfig plugin
     local mason_lspconfig = require("mason-lspconfig")
@@ -91,4 +111,3 @@ return {
 
   end,
 }
-
