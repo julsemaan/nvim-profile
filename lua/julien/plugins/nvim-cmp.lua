@@ -1,63 +1,71 @@
 return {
-  "hrsh7th/nvim-cmp",
-  event = "InsertEnter",
-  enabled = true,
-  dependencies = {
-    "hrsh7th/cmp-buffer", -- source for text in buffer
-    "hrsh7th/cmp-path", -- source for file system paths
-    {
-      "L3MON4D3/LuaSnip",
-      -- follow latest release.
-      version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-      -- install jsregexp (optional!).
-      build = "make install_jsregexp",
-    },
-    "saadparwaiz1/cmp_luasnip", -- for autocompletion
-    "rafamadriz/friendly-snippets", -- useful snippets
-    "onsails/lspkind.nvim", -- vs-code like pictograms
+  {
+    "Saghen/blink.cmp",
+    enabled = false,
   },
-  config = function()
-    local cmp = require("cmp")
-
-    local luasnip = require("luasnip")
-
-    local lspkind = require("lspkind")
-
-    -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
-    require("luasnip.loaders.from_vscode").lazy_load()
-
-    cmp.setup({
-      completion = {
-        completeopt = "menu,menuone,preview,noselect,noinsert,popup",
+  {
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+    enabled = true,
+    dependencies = {
+      "hrsh7th/cmp-buffer", -- source for text in buffer
+      "hrsh7th/cmp-path", -- source for file system paths
+      {
+        "L3MON4D3/LuaSnip",
+        -- follow latest release.
+        version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+        -- install jsregexp (optional!).
+        build = "make install_jsregexp",
       },
-      snippet = { -- configure how nvim-cmp interacts with snippet engine
-        expand = function(args)
-          luasnip.lsp_expand(args.body)
-        end,
-      },
-      mapping = cmp.mapping.preset.insert({
-        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
-        ["<C-e>"] = cmp.mapping.abort(), -- close completion window
-        -- Leads to disabling <CR>, could be adjusted but completion works without it so :shrug:
-        --["<CR>"] = cmp.mapping.confirm({ select = false }),
-      }),
-      -- sources for autocompletion
-      sources = cmp.config.sources({
-        { name = "nvim_lsp"},
-        --{ name = "luasnip" }, -- snippets
-        --{ name = "buffer" }, -- text within current buffer
-        --{ name = "path" }, -- file system paths
-      }),
+      "saadparwaiz1/cmp_luasnip", -- for autocompletion
+      "rafamadriz/friendly-snippets", -- useful snippets
+      "onsails/lspkind.nvim", -- vs-code like pictograms
+    },
+    config = function()
+      local cmp = require("cmp")
 
-      -- configure lspkind for vs-code like pictograms in completion menu
-      formatting = {
-        format = lspkind.cmp_format({
-          maxwidth = 50,
-          ellipsis_char = "...",
+      local luasnip = require("luasnip")
+
+      local lspkind = require("lspkind")
+
+      -- Keep only the completion menu; popup/preview opens a second overlapping window.
+      vim.opt.completeopt = { "menu", "menuone", "noselect", "noinsert" }
+
+      -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
+      require("luasnip.loaders.from_vscode").lazy_load()
+
+      cmp.setup({
+        completion = {
+          completeopt = "menu,menuone,noselect,noinsert",
+        },
+        snippet = { -- configure how nvim-cmp interacts with snippet engine
+          expand = function(args)
+            luasnip.lsp_expand(args.body)
+          end,
+        },
+        mapping = cmp.mapping.preset.insert({
+          ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+          ["<C-f>"] = cmp.mapping.scroll_docs(4),
+          ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
+          ["<C-e>"] = cmp.mapping.abort(), -- close completion window
+          ["<CR>"] = cmp.mapping.confirm({ select = true }),
         }),
-      },
-    })
-  end,
+        -- sources for autocompletion
+        sources = cmp.config.sources({
+          { name = "nvim_lsp" },
+          --{ name = "luasnip" }, -- snippets
+          --{ name = "buffer" }, -- text within current buffer
+          --{ name = "path" }, -- file system paths
+        }),
+
+        -- configure lspkind for vs-code like pictograms in completion menu
+        formatting = {
+          format = lspkind.cmp_format({
+            maxwidth = 50,
+            ellipsis_char = "...",
+          }),
+        },
+      })
+    end,
+  },
 }
